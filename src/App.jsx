@@ -14,7 +14,8 @@ import EditPost from './components/board/EditPost';
 const App = () => {
   const [postsByBoard, setPostsByBoard] = useState({
     '자유게시판': [
-      { id: 1, title: '첫 글', content: '내용입니다', user: '홍길동', time: '2025-07-07', likes: 0 },
+      { id: 1, title: '멋쟁이사자처럼 어때?', content: '는 내가 들어왔는데 너무 좋아!!!!!!!!!!!!', user: '홍길동', time: '2025-07-07', likes: 0 },
+      { id: 2, title: '학점 올랐어!!!', content: '저번 학기 3.32에서 4.2로 오름!! 잘했지...? 잘했다고 해 줘....... ', user: '익명', time: '2025-07-07', likes: 3 }
     ],
     '정보게시판': [],
     '취업·진로게시판': [],

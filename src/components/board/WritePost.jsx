@@ -93,7 +93,7 @@ const Label = styled.label`
 `;
 
 const Submit = styled.button`
-  background-color: #222;
+  background-color: orange;
   color: white;
   border: none;
   padding: 12px;
@@ -101,3 +101,4 @@ const Submit = styled.button`
   border-radius: 8px;
   cursor: pointer;
 `;
+
