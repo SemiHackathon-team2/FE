@@ -37,8 +37,8 @@ export default HomePage;
 // styled-components
 const Wrapper = styled.div`
     max-width: 800px;
-    margin: 50px;
-    transform: translateX(40%);
+    margin: 50px auto;
+    //transform: translateX(40%);
 
 `;
 
