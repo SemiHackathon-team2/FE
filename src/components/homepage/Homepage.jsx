@@ -37,13 +37,14 @@ export default HomePage;
 // styled-components
 const Wrapper = styled.div`
   max-width: 800px;
-  margin: 0 auto;
-  
+  margin: 50px;
 `;
 
 const SectionTitle = styled.h2`
   font-size: 18px;
   font-weight: bold;
+  margin-left: 25px;
+  margin-top: 50px;
   margin-bottom: 16px;
 `;
 
