@@ -71,7 +71,6 @@ const WriteButton = styled.button`
   bottom: 24px;
   left: 50%;
   transform: translate(-50%,-100%);
-
   background-color: orange;
   color: white;
   font-weight: 600;

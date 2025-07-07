@@ -45,7 +45,6 @@ const Post = ({ postsByBoard }) => {
       <Content>{post.content}</Content>
 
       <LikeBtn onClick={handleLike}>👍 좋아요 {likes}</LikeBtn>
-
       <CommentSection>
         <h3>댓글</h3>
         <CommentInput>
