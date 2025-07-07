@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { createPost } from '../../api';
+
 
 const WritePost = ({ onPostSubmit }) => {
   const { boardName } = useParams();
@@ -17,18 +19,28 @@ const WritePost = ({ onPostSubmit }) => {
       return;
     }
 
-    const newPost = {
-      id: Date.now(),
-      title,
-      content,
-      user: isAnonymous ? '익명' : '작성자',
-      time: new Date().toLocaleTimeString(),
-      likes: 0,
-      comments: 0,
-    };
+    // const newPost = {
+    //   id: Date.now(),
+    //   title,
+    //   content,
+    //   user: isAnonymous ? '익명' : '작성자',
+    //   time: new Date().toLocaleTimeString(),
+    //   likes: 0,
+    //   comments: 0,
+    // };
 
-    onPostSubmit(boardName, newPost); // 상위 컴포넌트에서 게시판별로 저장
+    createPost(1, {
+      "title": title,
+      "content": content,
+      "boardId": 1,
+      "userId": 1,
+      "anonymous": true
+    }).then(() => {
     navigate(`/board/${boardName}`);
+
+    })
+
+    // onPostSubmit(boardName, newPost); // 상위 컴포넌트에서 게시판별로 저장
   };
 
   return (

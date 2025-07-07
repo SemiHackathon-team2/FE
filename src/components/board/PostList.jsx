@@ -1,13 +1,25 @@
 // components/board/PostList.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { fetchBoards } from '../../api';
 
 const PostList = ({ postsByBoard }) => {
   const { boardName } = useParams();
   const navigate = useNavigate();
   const decodedBoard = decodeURIComponent(boardName);
-  const posts = postsByBoard[decodedBoard] || [];
+  // const posts = postsByBoard[decodedBoard] || [];
+
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+     fetchBoards().then((response) => {
+      setPosts(response)
+     })
+   
+  },[])
+
+  console.log(posts)
 
   return (
     <Wrapper>
@@ -18,7 +30,7 @@ const PostList = ({ postsByBoard }) => {
 
       {posts.map(post => (
         <PostItem
-          key={post.id}
+          key={post.postId}
           onClick={() =>
             navigate(`/board/${encodeURIComponent(decodedBoard)}/post/${post.id}`)
           }
