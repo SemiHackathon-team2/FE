@@ -107,7 +107,7 @@ const Content = styled.div`
 `;
 
 const LikeBtn = styled.button`
-  background: #ff4757;
+  background: orange;
   color: white;
   border: none;
   border-radius: 20px;
