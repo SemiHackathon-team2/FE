@@ -19,15 +19,28 @@ const Post = ({ postsByBoard }) => {
     setComments(prev => [...prev, input]);
     setInput('');
   };
+  const handleDelete = () => {
+  if (window.confirm('정말 삭제하시겠습니까?')) {
+    navigate(-1);
+  }
+};
+
+    const handleEdit = () => {
+  navigate(`/board/${encodeURIComponent(boardName)}/edit/${post.id}`);
+};
 
   if (!post) return <div>게시글을 찾을 수 없습니다.</div>;
 
   return (
     <Wrapper>
-      <Back onClick={() => navigate(-1)}>← 목록으로</Back>
-      <Title>{post.title}</Title>
-      <Meta>
+        <Back onClick={() => navigate(-1)}>← 목록으로</Back>
+        <Title>{post.title}</Title>
+        <Meta>
         {post.user} · {post.time}
+        <Button>
+            <Edit onClick={handleEdit}>수정</Edit>
+            <Delete onClick={handleDelete}>삭제</Delete>
+        </Button>
       </Meta>
       <Content>{post.content}</Content>
 
@@ -123,4 +136,27 @@ const CommentInput = styled.div`
     border-radius: 6px;
     cursor: pointer;
   }
+`;
+
+const Button = styled.div`
+  display: flex;
+  gap: 8px;
+  margin-right: auto;
+  justify-content: flex-end;
+`;
+
+const Delete = styled.button`
+  background: none;
+  border: 1px solid #ddd;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+const Edit = styled.button`
+  background: none;
+  border: 1px solid #ddd;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
 `;

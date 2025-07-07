@@ -1,7 +1,7 @@
 // App.jsx
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './components/homepage/HomePage';
+import HomePage from './components/homepage/Homepage';
 import BoardList from './components/board/BoardList';
 import PostList from './components/board/PostList';
 import WritePost from './components/board/WritePost';
