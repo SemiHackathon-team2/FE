@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-
+import PageURL from './PageURL';
 const boards = [
   '자유게시판',
   '정보게시판',
@@ -14,9 +14,10 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <Wrapper>
-      <SectionTitle>게시판 전체보기</SectionTitle>
 
+    <Wrapper>
+    <PageURL />
+      <SectionTitle>게시판 전체보기</SectionTitle>
       <BoardList>
         {boards.map((board, idx) => (
           <BoardRow
@@ -35,9 +36,9 @@ export default HomePage;
 
 // styled-components
 const Wrapper = styled.div`
-  padding: 80px 16px 120px;
   max-width: 800px;
   margin: 0 auto;
+  
 `;
 
 const SectionTitle = styled.h2`

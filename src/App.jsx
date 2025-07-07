@@ -62,6 +62,5 @@ export default App;
 
 const AppWrapper = styled.div``;
 const Main = styled.main`
-  padding-top: 56px;
   padding-bottom: 64px;
 `;
