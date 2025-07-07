@@ -1,92 +1,69 @@
-import styled from "styled-components";
-import { useState } from "react";
-//import Navbar from "../navbar/Navbar";
-//import BoardList from "../board/BoardList";
+// components/homepage/HomePage.jsx
+import React from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
+const boards = [
+  '자유게시판',
+  '정보게시판',
+  '취업·진로게시판',
+  '홍보게시판',
+];
 
-export default function Homepage(){
-    const [query, setQuery] = useState("");
+const HomePage = () => {
+  const navigate = useNavigate();
 
-  const handleSearch = () => {
-    console.log("검색어:", query);
-  };
+  return (
+    <Wrapper>
+      <SectionTitle>게시판 전체보기</SectionTitle>
 
-    return(
-        <div>        
-            <Header> 
-                <Left>
-                    <Logo src={"https://nowjin.tplinkdns.com/images/user/default-user-image150.png"} alt="EveryTime Logo"/>
-                    <Title>LionTime</Title>
-                </Left>
-                <Right>
-                    <Search
-                        type="text"
-                        placeholder="검색어를 입력하세요"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        />
-                    <SearchButton onClick={handleSearch}>검색</SearchButton>
-                </Right>
-            </Header>
-            {/*<NavBar/>*/}
-            {/*<BoardList/>*/}
+      <BoardList>
+        {boards.map((board, idx) => (
+          <BoardRow
+            key={idx}
+            onClick={() => navigate(`/board/${encodeURIComponent(board)}`)}
+          >
+            {board}
+          </BoardRow>
+        ))}
+      </BoardList>
+    </Wrapper>
+  );
+};
 
-        </div>
+export default HomePage;
 
-
-
-    );
-}
-
-const Title = styled.h1`
-    //color: #ff8000;
+// styled-components
+const Wrapper = styled.div`
+  padding: 80px 16px 120px;
+  max-width: 800px;
+  margin: 0 auto;
 `;
 
-const Header = styled.div`
-    display: flex;
-    width: 100%;
-    justify-content: space-between;  
-    padding: 16px 24px;
-    max-width: 100%;
-    box-sizing: border-box; 
-    //background-color: #f8f8f8;
+const SectionTitle = styled.h2`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
 `;
 
-const Logo = styled.img`
-    width: 80px;
-    height: 80px;
+const BoardList = styled.div`
+  background: #f9f9f9;
+  padding: 16px;
+  border-radius: 16px;
 `;
 
-const Search = styled.input`
-    border-radius: 4px;
-    font-size: 14px;
-    width: 200px;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-`;
-
-const Left = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 16px;
-`;
-
-const Right = styled.div`
-    display: flex;  
-    align-items: center;
-`;
-
-const SearchButton = styled.button`
-  margin-left: 8px;
-  padding: 8px 16px;
-  background-color: orange;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 14px;
+const BoardRow = styled.div`
+  padding: 14px 8px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
   cursor: pointer;
 
+  &:last-child {
+    border-bottom: none;
+  }
+
   &:hover {
-    background-color: skyblue;
+    background: #f0f0f0;
   }
 `;
