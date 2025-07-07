@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.jsx
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './components/homepage/HomePage';
+import BoardList from './components/board/BoardList';
+import PostList from './components/board/PostList';
+import WritePost from './components/board/WritePost';
+import Post from './components/board/Post';
+import Header from './components/header/Header';
+import Navbar from './components/navbar/Navbar';
+import styled from 'styled-components';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [postsByBoard, setPostsByBoard] = useState({
+    '자유게시판': [],
+    '정보게시판': [],
+    '취업·진로게시판': [],
+    '홍보게시판': [],
+  });
+
+  const handlePostSubmit = (boardName, newPost) => {
+    const decoded = decodeURIComponent(boardName);
+    setPostsByBoard(prev => ({
+      ...prev,
+      [decoded]: [newPost, ...(prev[decoded] || [])],
+    }));
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <AppWrapper>
+      <Header />
+      <Main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/board" element={<BoardList />} />
+          <Route path="/board/:boardName" element={<PostList postsByBoard={postsByBoard} />} />
+          <Route
+            path="/board/:boardName/write"
+            element={<WritePost onPostSubmit={handlePostSubmit} />}
+          />
+          <Route
+            path="/board/:boardName/post/:postId"
+            element={<Post postsByBoard={postsByBoard} />}
+          />
+        </Routes>
+      </Main>
+      <Navbar />
+    </AppWrapper>
+  );
+};
 
-export default App
+export default App;
+
+const AppWrapper = styled.div``;
+const Main = styled.main`
+  padding-top: 56px;
+  padding-bottom: 64px;
+`;
