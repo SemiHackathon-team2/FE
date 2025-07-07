@@ -1,11 +1,11 @@
 // api.js - 백엔드 기능명세서에 맞춘 API 연동 파일
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000/api'; // 실제 API 서버 주소로 수정 필요
+const BASE_URL = 'http://13.209.97.185:8080'; // 실제 API 서버 주소로 수정 필요
 
 // 📌 전체 게시판 목록 조회
 export const fetchBoards = async () => {
-  const response = await axios.get(`${BASE_URL}/boards`);
+  const response = await axios.get(`${BASE_URL}/api/boards/1/posts`);
   return response.data;
 };
 
@@ -17,7 +17,7 @@ export const fetchPostsByBoard = async (boardId) => {
 
 // 📌 게시글 등록
 export const createPost = async (boardId, postData) => {
-  const response = await axios.post(`${BASE_URL}/boards/${boardId}/posts`, postData);
+  const response = await axios.post(`${BASE_URL}/api/boards/${boardId}/posts`, postData);
   return response.data;
 };
 
