@@ -36,8 +36,10 @@ export default HomePage;
 
 // styled-components
 const Wrapper = styled.div`
-  max-width: 800px;
-  margin: 50px;
+    max-width: 800px;
+    margin: 50px;
+    transform: translateX(40%);
+
 `;
 
 const SectionTitle = styled.h2`
