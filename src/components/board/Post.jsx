@@ -58,7 +58,13 @@ const Post = ({ postsByBoard }) => {
         </CommentInput>
         <ul>
           {comments.map((comment, i) => (
+            <div>
             <li key={i}>💬 {comment}</li>
+            <Button>
+              <Edit>수정</Edit>
+              <Delete>삭제</Delete>
+            </Button>
+            </div>
           ))}
         </ul>
       </CommentSection>

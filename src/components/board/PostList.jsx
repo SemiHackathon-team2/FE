@@ -70,7 +70,8 @@ const WriteButton = styled.button`
   position: fixed;
   bottom: 24px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%,-100%);
+
   background-color: #ff4757;
   color: white;
   font-weight: 600;

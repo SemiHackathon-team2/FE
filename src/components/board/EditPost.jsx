@@ -3,10 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-console.log('postsByBoard:', postsByBoard);
-console.log('boardName:', boardName, 'decodedBoard:', decodedBoard, 'postId:', postId);
-console.log('found post:', post);
-
 const EditPost = ({ postsByBoard, setPostsByBoard }) => {
   const { boardName, postId } = useParams();
   const navigate = useNavigate();
@@ -44,7 +40,7 @@ const EditPost = ({ postsByBoard, setPostsByBoard }) => {
       return updated;
     });
 
-    navigate(`/board/${encodeURIComponent(boardName)}/${postId}`); // 게시글 상세로 이동
+    navigate(`/board/${encodeURIComponent(boardName)}/post/${postId}`); // 게시글 상세로 이동
   };
 
   if (!post) return <div>게시글을 찾을 수 없습니다.</div>;
